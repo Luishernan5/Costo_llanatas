@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>A* Llantas</title>
+
+    <style>
+
+        body{
+            font-family: Arial;
+            background: #f0f2f5;
+            text-align: center;
+        }
+
+        table{
+            margin: auto;
+            border-collapse: collapse;
+            width: 70%;
+            background: white;
+        }
+
+        th, td{
+            border: 1px solid black;
+            padding: 10px;
+        }
+
+        th{
+            background: #3498db;
+            color: white;
+        }
+
+        input{
+            width: 70px;
+            padding: 5px;
+            text-align: center;
+        }
+
+        button{
+            margin-top: 20px;
+            padding: 12px 25px;
+            background: green;
+            color: white;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .resultado{
+            margin-top: 30px;
+            background: white;
+            width: 50%;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <h1>ALGORITMO A*</h1>
+
+    <h2>Compra Óptima de Llantas</h2>
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        <table>
+
+            <tr>
+                <th>Empresa</th>
+                <th>T</th>
+                <th>H</th>
+                <th>V</th>
+                <th>W</th>
+            </tr>
+
+            <tr>
+
+                <td>Empresa1</td>
+
+                <td>
+                    <input type="number" name="E1T" value="20">
+                </td>
+
+                <td>
+                    <input type="number" name="E1H" value="30">
+                </td>
+
+                <td>
+                    <input type="number" name="E1V" value="20">
+                </td>
+
+                <td>
+                    <input type="number" name="E1W" value="40">
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td>Empresa2</td>
+
+                <td>
+                    <input type="number" name="E2T" value="50">
+                </td>
+
+                <td>
+                    <input type="number" name="E2H" value="50">
+                </td>
+
+                <td>
+                    <input type="number" name="E2V" value="40">
+                </td>
+
+                <td>
+                    <input type="number" name="E2W" value="50">
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td>Empresa3</td>
+
+                <td>
+                    <input type="number" name="E3T" value="60">
+                </td>
+
+                <td>
+                    <input type="number" name="E3H" value="55">
+                </td>
+
+                <td>
+                    <input type="number" name="E3V" value="50">
+                </td>
+
+                <td>
+                    <input type="number" name="E3W" value="60">
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td>Empresa4</td>
+
+                <td>
+                    <input type="number" name="E4T" value="100">
+                </td>
+
+                <td>
+                    <input type="number" name="E4H" value="80">
+                </td>
+
+                <td>
+                    <input type="number" name="E4V" value="60">
+                </td>
+
+                <td>
+                    <input type="number" name="E4W" value="70">
+                </td>
+
+            </tr>
+
+        </table>
+
+        <button type="submit">
+
+            Resolver con A*
+
+        </button>
+
+    </form>
+
+    {% if resultado %}
+
+    <div class="resultado">
+
+        <h2>Mejor Solución</h2>
+
+        {% for tipo, empresa, precio in resultado %}
+
+            <p>
+
+                Tipo {{ tipo }}
+                →
+                {{ empresa }}
+                →
+                ${{ precio }}
+
+            </p>
+
+        {% endfor %}
+
+        <h3>
+
+            Costo Total:
+            ${{ total }}
+
+        </h3>
+
+    </div>
+
+    {% endif %}
+
+</body>
+</html>
